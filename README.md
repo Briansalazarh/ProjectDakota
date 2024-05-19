@@ -1,12 +1,11 @@
-ProjectDakota
+ProjectDakota 2023
 Descripción del proyecto:
 
 ProjectDakota es una aplicación web full stack diseñada para organizaciones no gubernamentales (ONG). 
 Proporciona una plataforma para que las ONG gestionen sus actividades, proyectos, donaciones y voluntarios. 
-El proyecto fue desarrollado como parte del bootcamp de programación de Coding Dojo en colaboración con Accenture.
+El proyecto fue desarrollado como parte del proyecto final del bootcamp de programación de Coding Dojo en colaboración con Accenture.
 
 Tecnologías utilizadas
-
 Java
 Spring Framework (Spring Boot, Spring MVC, Spring Security, Spring Data JPA)
 MySQL
