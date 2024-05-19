@@ -1,11 +1,11 @@
-ProjectDakota
+## Autor Brian Salazar, Leones toro, Emely zea, Alan Avila, Pablo Mery
+ProjectDakota 
 Descripción del proyecto:
-
 ProjectDakota es una aplicación web full stack diseñada para organizaciones no gubernamentales (ONG). 
 Proporciona una plataforma para que las ONG gestionen sus actividades, proyectos, donaciones y voluntarios. 
 El proyecto fue desarrollado como parte del bootcamp de programación de Coding Dojo en colaboración con Accenture.
 
-Tecnologías utilizadas
+Tecnologías utilizadas:
 
 Java
 Spring Framework (Spring Boot, Spring MVC, Spring Security, Spring Data JPA)
