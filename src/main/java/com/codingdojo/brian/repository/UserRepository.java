@@ -1,9 +1,9 @@
-package com.codingdojo.leonel.repository;
+package com.codingdojo.brian.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codingdojo.leonel.models.User;
+import com.codingdojo.brian.models.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Long>{

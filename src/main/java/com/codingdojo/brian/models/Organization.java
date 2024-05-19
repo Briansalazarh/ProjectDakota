@@ -1,12 +1,15 @@
-package com.codingdojo.leonel.models;
+package com.codingdojo.brian.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -44,8 +47,12 @@ public class Organization {
 	 3.-USER
 	 */
 	private Integer userType=2;
+	@NotEmpty
+	private String description;
+	private String category;
 	@NotEmpty(message="Password is obligatory")
 	@Size(min=6,message="Password must be at least 6 characters")
+	@NotEmpty(message="category is obligatory")
 	private String password;
 	@Transient
 	@NotEmpty(message="Password is obligatory")
@@ -56,6 +63,9 @@ public class Organization {
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy = "ong_review", cascade = CascadeType.ALL)
+	private List<Review> reviews;
 	
 	public Organization() {
 	}
@@ -193,7 +203,36 @@ public class Organization {
 	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
-	
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 	
 }

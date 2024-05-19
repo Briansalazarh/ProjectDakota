@@ -1,0 +1,75 @@
+.perfil {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.perfil img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.perfilBtn{
+    display: flex;
+      background-color: #d6d4d4;
+      margin: 5px;
+}
+
+.perfilBtn a{
+    margin: 10px;
+    margin-right: 10px;
+}
+.heigthPerfil{
+	margin-bottom: auto;
+}
+
+
+.perfilBtn ul{
+	display: flex;
+	list-style: none;
+	margin-bottom: 0px; 
+}
+
+ul.slider li {
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background:#fff;
+}
+
+#slider-4{
+	z-index:-1;
+	position: relative;
+}
+
+ul.slider li:first-child {
+    opacity: 1; /*Mostramos el primer <li>*/
+    top: 25px;
+}
+
+ul.slider li:target {
+	
+	position:absolute;
+    opacity: 1; /*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.slider{
+	overflow-anchor:none;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.slider{
+  position: relative;
+  width: 800px;
+  height: 300px;
+}

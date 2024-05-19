@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title>Perfil ONG</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/perfil.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,7 @@
 	
 </head>
 <body>
-
+	<main>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary ">
   			<div class="container-fluid">
     			<a class="navbar-brand" href="/plush">
@@ -24,9 +25,9 @@
       				<span class="navbar-toggler-icon"></span>
     			</button>
    			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      			<ul class="navbar-nav">
+      			<ul class="navbar-nav menu">
         			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
+          				<a class="nav-link selected" aria-current="page" href="/plush">Inicio</a>
         			</li>
         			<li class="nav-item">
           				<a class="nav-link" href="#">Campañas</a>
@@ -40,8 +41,11 @@
         			<li class="nav-item">
           				<a class="nav-link" href="/donaciones">Dona</a>
         			</li>
+    				<li>
+    					<a class="nav-link" href="/logout">Cerrar sesión</a>
+      				</li>
       			</ul>
-      			<a class="nav-link" href="/inicia_sesion">Ingresar</a>
+    					
     		</div>
   			</div>
 		</nav>
@@ -53,43 +57,49 @@
 				<img id="avatar" src="/img/avatar.jpg" alt="avatar">
 			</div>
 			<div class="info">
-				<h1>${userInSession.orgaName}-${userInSession.acronym}</h1>
-				<p>Correo electrónico: ${userInSession.email}</p>
-			</div>
-			<div>
-				<a class="btn btn-secondary" href="/editarPerfil">Editar perfil</a>
+				<h1>${ong.orgaName} ${ong.acronym}</h1>
 			</div>
 		</div>
 		<div class="perfilBtn">
-			<a class="btn" href="/editarPerfil">Perfil</a>
-			<a class="btn" href="/editarPerfil">Boton</a>
-			<a class="btn" href="/editarPerfil">Boton</a>
-			<a class="btn" href="/editarPerfil">Notificaciones</a>
-			<a class="btn" href="/editarPerfil">Opciones</a>
-		</div>
-		
-		
-<!--  <div class="publications">
-			<h2>Información adicional</h2>
-			<ul>
-				<li>País: España</li>
-				<li>Fecha de nacimiento: 01/01/1990</li>
-				<li>Género: Masculino</li>
-				<li>Intereses: Deportes, tecnología, viajes</li>
+			<ul class="d-flex">
+				<li><a class="btn" href="#slide1">Actividad</a></li>
+				<li><a class="btn" href="#slide2">Perfil</a></li>
 			</ul>
-			<h2>Publicaciones</h2>
-			<div class="post">
-				<h3>Título de la publicación</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus vel eros volutpat gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-			</div>
-			<div class="post">
-				<h3>Otra publicación</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus vel eros volutpat gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-			</div>
-			
 		</div>
-		 -->
+		<ul class="slider">
+		    <li id="slide1">
+		      <h1>Actividad</h1>
+		      <div class="list-group">
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Donaciones</h5>
+				      <small>3 days ago</small>
+				    </div>
+				    <p class="mb-1">Realizó  una donación de $10.000.</p>
+				    <small>Donec id elit non mi porta.</small>
+				  </a>
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Comentarios</h5>
+				      <small class="text-muted">3 days ago</small>
+				    </div>
+				    <p class="mb-1">Añadió un comentario a la publicación de ${ong.orgaName}</p>
+				    <small class="text-muted">Donec id elit non mi porta.</small>
+				  </a>
+			</div>
+		    </li>
+		    <li id="slide2">
+		      <h6>Nombre</h6>
+		      <p>${ong.orgaName}</p>
+		      <h6>Acronimo</h6>
+		      <p>${ong.acronym}</p>
+		      <h6>Email</h6>
+		      <p>${ong.email}</p>
+		    </li>
+	  	</ul>
+		
 	</div>
+	</main>
 	<footer id="footer" class="text-center text-lg-start text-white">
 	    <section class="d-flex justify-content-between p-4 footer_sup">
 	      <div class="me-5 text_footer_sup ">
@@ -140,9 +150,10 @@
 	                class="mb-4 mt-0 d-inline-block mx-auto"
 	                style="width: 60px; background-color: #7c4dff; height: 2px"
 	                />
-	            <p>
-	              <a href="#!" class="text-white">Tu cuenta</a>
-	            </p>
+		        <p>
+		        	<a href="/perfil/${ong.id}" class="text-white">Tu cuenta</a>
+		        </p>
+	           
 	            <p>
 	              <a href="/donaciones" class="text-white">Donaciones</a>
 	            </p>

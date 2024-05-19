@@ -1,4 +1,4 @@
-package com.codingdojo.leonel.models;
+package com.codingdojo.brian.models;
 
 import java.util.Date;
 import java.util.List;
@@ -36,10 +36,9 @@ public class User {
 	@Email
 	private String email;
 	@NotEmpty(message="Password is obligatory")
-	
+	@Size(min=6,message="Password must be at least 6 characters")
 	private String password;
 	@Transient
-	@NotEmpty(message="Password is obligatory")
 	
 	private String confirm;
 	/*TIPOS DE USUARIO:

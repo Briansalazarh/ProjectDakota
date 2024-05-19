@@ -1,4 +1,4 @@
-package com.codingdojo.leonel.services;
+package com.codingdojo.brian.services;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import com.codingdojo.leonel.models.Organization;
-import com.codingdojo.leonel.models.Review;
-import com.codingdojo.leonel.models.User;
-import com.codingdojo.leonel.repository.OrganizationRepository;
-import com.codingdojo.leonel.repository.ReviewRepository;
-import com.codingdojo.leonel.repository.UserRepository;
+import com.codingdojo.brian.models.Organization;
+import com.codingdojo.brian.models.Review;
+import com.codingdojo.brian.models.User;
+import com.codingdojo.brian.repository.OrganizationRepository;
+import com.codingdojo.brian.repository.ReviewRepository;
+import com.codingdojo.brian.repository.UserRepository;
 
 @Service
 public class AppServices {
@@ -118,7 +118,6 @@ public class AppServices {
 		return organizationRepo.findById(id).orElse(null);
 	}
 	
-	
 	public Organization saveOrganization(Organization organization) {
 		return organizationRepo.save(organization);
 	}
@@ -130,16 +129,27 @@ public class AppServices {
 	
 	/*Guarda cambios en usuario*/
 	public User saveUser(User user) {
+		String pass_encript = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+		user.setPassword(pass_encript);
 		return userRepo.save(user);
 	}
-	// guardar una reseña
-	public Review saveReview(Review newReview) {
-		return reviewRepo.save(newReview);
-	}
-	// mostrar una lista de reseña
-	public List<Review> showReview(){
-		return reviewRepo.findAll();
-	}
+	
 	// mostrar y ordenar lista de reseña
 	
+	public Review saveReview(Review review) {
+        return reviewRepo.save(review);
+    }
+    public Review findReview(Long Id) {
+        return reviewRepo.findById(Id).orElse(null);
+    }
+
+    // mostrar una lista de reseña
+    public List<Review> showReview(){
+        return reviewRepo.findAll();
+    }
+    
+    public void deleteReview(Long id) {
+        reviewRepo.deleteById(id);
+    }
+    
 }

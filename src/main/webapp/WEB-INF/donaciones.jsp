@@ -16,48 +16,56 @@
 </head>
 <body class="fondoVector">
 	<nav class="navbar navbar-expand-lg bg-body-tertiary ">
-  			<div class="container-fluid">
-    			<a class="navbar-brand" href="/plush">
-    			<img id="logo" src="/img/logoDakota.png" alt="Dakota Logo">
-    			</a>
-    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      				<span class="navbar-toggler-icon"></span>
-    			</button>
-   			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      			<ul class="navbar-nav">
-        			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="#">Campañas</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/contactanos">Contactanos</a>
-        			</li>
-        			<li class="nav-item">
-          				<a class="nav-link" href="/donaciones">Dona</a>
-        			</li>
-        			<c:if test="${empty userInSession}">
-        				<li>
-        					<a class="nav-link" href="/inicia_sesion">Ingresar</a>
-        				</li>
-        			</c:if>
-        			<c:if test="${not empty userInSession}">
-        				<li>
-        				<a class="nav-link" href="#">Mi perfil</a>
-    					</li>
-    					<li>
-    					<a class="nav-link" href="/logout">Cerrar sesión</a>
-      					</li>
-      				</c:if>	
-      			</ul>
-    					
-    		</div>
-  			</div>
-		</nav>
+	  	<div class="container-fluid">
+	    			<a class="navbar-brand" href="/plush">
+	    			<img id="logo" src="/img/logoDakota.png" alt="Dakota Logo">
+	    			</a>
+	    			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      				<span class="navbar-toggler-icon"></span>
+	    			</button>
+	   			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+	      			<ul class="navbar-nav menu">
+	        			<li class="nav-item">
+	          				<a class="nav-link selected" href="/plush">Inicio</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/campañas">Campañas</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/contactanos">Contactanos</a>
+	        			</li>
+	        			<li class="nav-item">
+	          				<a class="nav-link" href="/donaciones">Dona</a>
+	        			</li>
+	        			<c:if test="${empty userInSession}">
+	        				<li>
+	        					<a class="nav-link" href="/inicia_sesion">Ingresar</a>
+	        				</li>
+	        			</c:if>
+	        			<c:if test="${not empty userInSession}">
+	        				<c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    				<c:if test="${userInSession.userType==2}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil_ong/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    					<li>
+		    					<a class="nav-link" href="/logout">Cerrar sesión</a>
+		      					</li>
+		      					
+	      				</c:if>	
+	      			</ul>
+	    					
+	    		</div>
+	  			</div>
+			</nav>
 	<div class="container mt-3 mb-4" id="donaciones_datos">
     	<div>
     		<div class="row">
@@ -217,9 +225,16 @@
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-            <p>
-              <a href="#!" class="text-white">Tu cuenta</a>
-            </p>
+            <c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
+	           <c:if test="${userInSession.userType==2}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
             <p>
               <a href="/donaciones" class="text-white">Donaciones</a>
             </p>

@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>new User</title>
+<title>Quienes somos</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,77 +29,127 @@
 	          				<a class="nav-link selected" href="/plush">Inicio</a>
 	        			</li>
 	        			<li class="nav-item">
-	          				<a class="nav-link selected" href="/campañas">Campañas</a>
+	          				<a class="nav-link" href="/campañas">Campañas</a>
 	        			</li>
 	        			<li class="nav-item">
-	          				<a class="nav-link selected" href="/nuestra-mision">Nuestra mision</a>
+	          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
 	        			</li>
 	        			<li class="nav-item">
-	          				<a class="nav-link selected" href="/contactanos">Contactanos</a>
+	          				<a class="nav-link" href="/contactanos">Contactanos</a>
 	        			</li>
 	        			<li class="nav-item">
-	          				<a class="nav-link selected" href="/donaciones">Dona</a>
-	        			</li>	
+	          				<a class="nav-link" href="/donaciones">Dona</a>
+	        			</li>
+	        			<c:if test="${empty userInSession}">
+	        				<li>
+	        					<a class="nav-link" href="/inicia_sesion">Ingresar</a>
+	        				</li>
+	        			</c:if>
+	        			<c:if test="${not empty userInSession}">
+	        				<c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    				<c:if test="${userInSession.userType==2}">
+		        				<li>
+		        				<a class="nav-link" href="/perfil_ong/${userInSession.id}">Mi perfil</a>
+		    					</li>
+		    				</c:if>
+		    					<li>
+		    					<a class="nav-link" href="/logout">Cerrar sesión</a>
+		      					</li>
+		      					
+	      				</c:if>	
 	      			</ul>
 	    					
 	    		</div>
 	  			</div>
 			</nav>
-	<div class="container">	
-		<div class="d-flex grid gap-4"> 
-			<div class="g-col-6 p-4 registro">
-				<h2 class="negrita header">Registrate</h2>
-				<form:form action="/register" method="post" modelAttribute="newUser">
-					<div>
-						<form:label class="mt-3" path="name">Nombre</form:label>
-						<form:input path="name" class="form-control"/>
-						<form:errors path="name" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="lastName">Apellidos</form:label>
-						<form:input path="lastName" class="form-control"/>
-						<form:errors path="lastName" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="email">Email</form:label>
-						<form:input path="email" class="form-control"/>
-						<form:errors path="email" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="password">Contraseña</form:label>
-						<form:password path="password" class="form-control"/>
-						<form:errors path="password" class="text-danger"/>
-					</div>
-					<div>
-						<form:label class="mt-3" path="confirm">Confirmar Contraseña</form:label>
-						<form:password path="confirm" class="form-control"/>
-						<form:errors path="confirm" class="text-danger"/>
-					</div>
-					<div class="d-flex mt-5">
-						<input type="submit" class="btn btn-primary" value="Crear cuenta">
-						<div class="align-self-center">
-							<span>¿Eres una ONG? </span>
-							<a href="/inicia_sesion_ong">Registrate aquí</a>
-						</div>	
-					</div>
-				</form:form>
-			</div>
-			<div class="g-col-6 p-4 inicio ">
-				<h2 class="negrita header">Inicia sesión</h2>
-				<p class="text-danger">${error_login}</p>
-					<form action="/login" method="post">
-						<div>
-							<label class="mt-3">Email</label>
-							<input type="text" class="form-control" name="email"/>
-						</div>
-						<div>
-							<label class="mt-3">Contraseña</label>
-							<input type="password" class="form-control" name="password"/>
-						</div>
-						<input type="submit" class="btn btn-primary mt-3" value="Ingresar">
-					</form>
+	<div class="container">
+		<!-- HEADER -->
+		<div class="RevHeader">
+
+				<img id="GPlogo" src="https://i.pinimg.com/564x/60/55/22/60552236f6300d1b2c84cf373294fe6d.jpg" alt="GreenpeaceLogo">
+
+			<div class="info">
+				<h1>Protege los océanos del mundo</h1>
+				<h3>PB</h3>
+				<a href="/campañas" class="btn btn-info">Volver a Campañas</a>
 			</div>
 		</div>
+		
+		<!-- HEADER -->
+		
+		<!-- CONT1 -->
+		<div class="cont1" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+			<img alt="Ballena" src="https://i.pinimg.com/564x/f1/25/78/f125787c594120b150fbd35597654179.jpg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tristique nisi in lacus mattis, eget posuere elit mollis. Vivamus ac eleifend massa. In ut varius ligula. Vestibulum tempus, nunc at fringilla viverra, nibh dui vestibulum sapien, sed fringilla arcu leo id tortor. Quisque gravida massa in tellus lobortis, id luctus eros aliquam. Aliquam sit amet lacinia odio. Integer eget odio a lorem tempor auctor sed eget est. Aliquam aliquet, elit id iaculis dapibus, neque leo aliquet velit, eu consequat tortor odio ac urna. Donec ut metus at elit vestibulum consectetur. Nulla facilisi. Curabitur id fermentum neque. Nam sodales, lorem a hendrerit accumsan, lacus enim gravida lectus, vitae facilisis est nisi in dui.</p>
+		</div>
+		<!-- CONT1 -->
+		
+		<!-- CONT2 -->
+		<div class="cont1" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+			<div>
+				<p>Suspendisse sed justo at risus iaculis faucibus. Nulla facilisi. Duis vulputate, velit at faucibus euismod, ante purus vulputate sapien, ut vulputate lectus erat non massa. In ultrices arcu mauris, vel lacinia tellus pharetra non. Proin nec ultricies nulla, a vestibulum nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vestibulum velit quis enim eleifend, vitae consectetur nunc tempor. Donec ac consectetur ligula. Suspendisse aliquet velit nec est facilisis, sit amet dapibus sapien iaculis. Morbi vel semper dui. Cras feugiat, mauris vel efficitur congue, mi sem fermentum nunc, vel faucibus arcu nisi non est. In hac habitasse platea dictumst. Sed id congue justo.</p>
+				<a href="/donaciones" class="btn btn-light">Quiero hacer una donación</a>
+			</div>
+			<img alt="oceano" src="https://i.pinimg.com/564x/db/c1/7f/dbc17f643d217cb70983705e17b260d2.jpg">
+		</div>
+		<!-- CONT2 -->
+	
+		<!-- REVIEWS -->
+		<div class="contr d-flex justify-content-center flex-wrap">
+			<div class="g-col-6 p-4" id="mision">
+				<h1 class="header negrita">Reviews </h1><!-- Welcome to reviews -> Reviews -->
+				<form:form action="/CreateReview" method="post" modelAttribute="review">
+					<div class="form-group">
+						<form:label path="message"><h5>Add Review:</h5></form:label>
+						<form:textarea path="message" class="form-control" />
+						<form:errors path="message" class="text-danger" />
+						<form:label path="rating"><h5>Rating:</h5></form:label>
+						<form:errors path="rating" class="text-danger "></form:errors>
+						<form:select path="rating" >
+                              <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                             <option value="6">6</option>
+                             <option value="7">7</option>
+                             <option value="8">8</option>
+                             <option value="9">9</option>
+                             <option value="10">10</option>
+                        </form:select>
+						<form:hidden path="author" value="${userInSession.id}" />
+						<div class="Creview">
+							<input type="submit" class="btn btn-primary" value="Create Review" />
+						</div>
+							
+					</div>
+				</form:form>
+				
+			</div>
+			<div class="g-col-6 p-4 mt-4" id="contacto">
+				<c:forEach items="${ rev}" var="review">
+					<div id="review-body">
+						<p>Autor: ${review.author.name} ${review.author.lastName }</p>
+						<p>Opinion: ${review.message}</p>
+						<p>Nota: ${review.rating }</p>
+						<c:if test="${review.author.id == userInSession.id}">
+							<form action="/ReviewDelete/${review.id}" method="post">
+		                    	<input type="hidden" name="_method" value="delete" />
+		                        <input type="submit" value="Eliminar" />
+		                    </form>
+						</c:if>
+						
+                   </div>
+                   <hr>
+				</c:forEach>
+			</div>
+		</div>
+		<!-- REVIEWS -->
+		
 	</div>
 	<footer id="footer"
           class="text-center text-lg-start text-white"

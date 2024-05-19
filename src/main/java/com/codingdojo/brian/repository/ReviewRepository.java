@@ -1,11 +1,11 @@
-package com.codingdojo.leonel.repository;
+package com.codingdojo.brian.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codingdojo.leonel.models.Review;
+import com.codingdojo.brian.models.Review;
 
 @Repository
 public interface ReviewRepository extends CrudRepository<Review,Long>{

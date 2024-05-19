@@ -1,4 +1,4 @@
-package com.codingdojo.leonel.models;
+package com.codingdojo.brian.models;
 
 import java.util.Date;
 
@@ -37,6 +37,10 @@ public class Review {
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="organization_id")
+	private Organization ong_review;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")

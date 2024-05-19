@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +24,12 @@
       				<span class="navbar-toggler-icon"></span>
     			</button>
    			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      			<ul class="navbar-nav">
+      			<ul class="navbar-nav menu">
         			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
+          				<a class="nav-link selected" aria-current="page" href="/plush">Inicio</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" href="#">Campañas</a>
+          				<a class="nav-link" href="/campañas">Campañas</a>
         			</li>
         			<li class="nav-item">
           				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
@@ -86,6 +87,20 @@
 						<form:label class="mt-3" path="email">Email de la organización</form:label>
 						<form:input path="email" class="form-control"/>
 						<form:errors path="email" class="text-danger"/>
+					</div>
+					<div>
+						<form:label path="category">categorias</form:label>
+						<form:select path="category" class="form-control">
+							<c:forEach items="${category}" var="categories">
+								<option value="${categories}">${categories}</option>
+							</c:forEach>
+						</form:select>
+					</div>
+					
+					<div>
+						<form:label class="mt-3" path="description">Descripción</form:label>
+						<form:textarea path="description" class="form-control"/>
+						<form:errors path="description" class="text-danger"/>
 					</div>
 					<div>
 						<form:label class="mt-3" path="password">Contraseña</form:label>
@@ -181,9 +196,16 @@
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-            <p>
-              <a href="#!" class="text-white">Tu cuenta</a>
-            </p>
+            <c:if test="${userInSession.userType==3 || userInSession.userType==1}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
+	           <c:if test="${userInSession.userType==2}">
+		            <p>
+		              <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		            </p>
+	           </c:if>
             <p>
               <a href="/donaciones" class="text-white">Donaciones</a>
             </p>

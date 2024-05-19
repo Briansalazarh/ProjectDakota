@@ -1,4 +1,4 @@
-package com.codingdojo.leonel.controllers;
+package com.codingdojo.brian.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.codingdojo.leonel.models.User;
-import com.codingdojo.leonel.services.AppServices;
+import com.codingdojo.brian.models.User;
+import com.codingdojo.brian.services.AppServices;
 
 @Controller
 public class UserController {
@@ -78,7 +78,6 @@ public class UserController {
 		User userEdit= service.findUser(id);
 		model.addAttribute("user", userEdit);
 		return "editar.jsp";
-		
 	}
 	
 	@PutMapping("/update")
@@ -93,7 +92,6 @@ public class UserController {
 			return "editar.jsp";
 		}
 		else {
-			
 			service.saveUser(userEdit);
 			return "redirect:/perfil/"+userEdit.getId();
 		}

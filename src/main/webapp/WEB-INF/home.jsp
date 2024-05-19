@@ -25,12 +25,12 @@
 	      				<span class="navbar-toggler-icon"></span>
 	    			</button>
 	   			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-	      			<ul class="navbar-nav">
+	      			<ul class="navbar-nav menu">
 	        			<li class="nav-item">
-	          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
+	          				<a class="nav-link" href="/plush">Inicio</a>
 	        			</li>
 	        			<li class="nav-item">
-	          				<a class="nav-link" href="#">Campañas</a>
+	          				<a class="nav-link" href="/campañas">Campañas</a>
 	        			</li>
 	        			<li class="nav-item">
 	          				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
@@ -140,9 +140,10 @@
 	                class="mb-4 mt-0 d-inline-block mx-auto"
 	                style="width: 60px; background-color: #7c4dff; height: 2px"
 	                />
-	            <p>
-	              <a href="#!" class="text-white">Tu cuenta</a>
-	            </p>
+		        <p>
+		          <a href="/perfil/${userInSession.id}" class="text-white">Tu cuenta</a>
+		       </p>
+	  
 	            <p>
 	              <a href="/donaciones" class="text-white">Donaciones</a>
 	            </p>

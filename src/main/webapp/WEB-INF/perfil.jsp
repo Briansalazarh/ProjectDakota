@@ -7,6 +7,7 @@
 	<title>Perfil</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/perfil.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
 	
 </head>
 <body>
-
+	<main>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary ">
   			<div class="container-fluid">
     			<a class="navbar-brand" href="/plush">
@@ -24,12 +25,12 @@
       				<span class="navbar-toggler-icon"></span>
     			</button>
    			 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      			<ul class="navbar-nav">
+      			<ul class="navbar-nav menu">
         			<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/plush">Inicio</a>
+          				<a class="nav-link selected" aria-current="page" href="/plush">Inicio</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" href="#">Campañas</a>
+          				<a class="nav-link" href="/campañas">Campañas</a>
         			</li>
         			<li class="nav-item">
           				<a class="nav-link" href="/nuestra-mision">Nuestra mision</a>
@@ -40,12 +41,14 @@
         			<li class="nav-item">
           				<a class="nav-link" href="/donaciones">Dona</a>
         			</li>
+    				<li>
+    					<a class="nav-link" href="/logout">Cerrar sesión</a>
+      				</li>
       			</ul>
-      			<a class="nav-link" href="/inicia_sesion">Ingresar</a>
+    					
     		</div>
   			</div>
 		</nav>
-	
 	<div class="container heigthPerfil">
 	
 		<div class="perfil">
@@ -53,43 +56,94 @@
 				<img id="avatar" src="/img/avatar.jpg" alt="avatar">
 			</div>
 			<div class="info">
-				<h1>${userInSession.name} ${userInSession.lastName}</h1>
-				<p>Correo electrónico: ${userInSession.email}</p>
-			</div>
-			<div>
-				<a class="btn btn-secondary" href="/editar/${userInSession.id}">Editar perfil</a>
+				<h1>${user.name} ${user.lastName}</h1>
 			</div>
 		</div>
 		<div class="perfilBtn">
-			<a class="btn" href="/editarPerfil">Perfil</a>
-			<a class="btn" href="/editarPerfil">Boton</a>
-			<a class="btn" href="/editarPerfil">Boton</a>
-			<a class="btn" href="/editarPerfil">Notificaciones</a>
-			<a class="btn" href="/editarPerfil">Opciones</a>
-		</div>
-		
-		
-<!--  <div class="publications">
-			<h2>Información adicional</h2>
-			<ul>
-				<li>País: España</li>
-				<li>Fecha de nacimiento: 01/01/1990</li>
-				<li>Género: Masculino</li>
-				<li>Intereses: Deportes, tecnología, viajes</li>
+			<ul class="d-flex">
+				<li><a class="btn" href="#slide1">Perfil</a></li>
+				<li><a class="btn" href="#slide3">Actividad</a></li>
+				<li><a class="btn" href="#slide2">Opciones</a></li>
+				<li><a class="btn btn-warning" href="#slide4">Te podría interesar...</a></li>
 			</ul>
-			<h2>Publicaciones</h2>
-			<div class="post">
-				<h3>Título de la publicación</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus vel eros volutpat gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-			</div>
-			<div class="post">
-				<h3>Otra publicación</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae lacus vel eros volutpat gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-			</div>
-			
 		</div>
-		 -->
+		<ul class="slider">
+		    <li id="slide1" >
+		      <h6><strong>NOMBRE</strong></h6>
+		      <p>${user.name}</p>
+		      <h6><strong>APELLIDO</strong></h6>
+		      <p>${user.lastName}</p>
+		      <h6><strong>EMAIL</strong></h6>
+		      <p>${user.email}</p>
+		    </li>
+		    <li id="slide2">
+		      <h2>CONFIGURACION</h2>
+		      <a href="/editar/${user.id}" class="btn btn-secondary">Editar perfil</a>
+		      <a href="/contrasena" class="btn btn-secondary">Cambiar contraseña</a>
+		      <a href="/historial" class="btn btn-secondary">Revisar donaciones</a>
+		    </li>
+		    <li id="slide3">
+		      <h1>ACTIVIDAD</h1>
+		      <div class="list-group">
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">DONACIÓN</h5>
+				      <small>3 days ago</small>
+				    </div>
+				    <p class="mb-1">Realizó  una donación de $10.000.</p>
+				    <small>Donec id elit non mi porta.</small>
+				  </a>
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">COMENTARIO</h5>
+				      <small class="text-muted">3 days ago</small>
+				    </div>
+				    <p class="mb-1">Añadió un comentario a la publicación de ${ong.ornaName}</p>
+				    <small class="text-muted">Donec id elit non mi porta.</small>
+				  </a>
+				  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Rating</h5>
+				      <small class="text-muted">3 days ago</small>
+				    </div>
+				    <p class="mb-1">Añadió un rating a ORGANIZATION NAME</p>
+				    <small class="text-muted">Donec id elit non mi porta.</small>
+				  </a>
+				</div>
+		    </li>
+		    <li id="slide4">
+		    	<h1>SUGERENCIAS</h1>
+		    	<div class="card-deck">
+					<div class="card">
+					    <img class="card-img-top" src="..." alt="Card image cap">
+					    <div class="card-body">
+					      <h5 class="card-title">Card title</h5>
+					      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+					      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					    </div>
+					</div>
+					<div class="card">
+					    <img class="card-img-top" src="..." alt="Card image cap">
+					    <div class="card-body">
+					      <h5 class="card-title">Card title</h5>
+					      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+					      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					    </div>
+					</div>
+					<div class="card">
+					    <img class="card-img-top" src="..." alt="Card image cap">
+					    <div class="card-body">
+					      <h5 class="card-title">Card title</h5>
+					      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+					      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    	</div>
+				  	</div>
+				</div>
+		    </li>
+	  	</ul>
+		
 	</div>
+	</main>
 	<footer id="footer" class="text-center text-lg-start text-white">
 	    <section class="d-flex justify-content-between p-4 footer_sup">
 	      <div class="me-5 text_footer_sup ">
@@ -140,9 +194,10 @@
 	                class="mb-4 mt-0 d-inline-block mx-auto"
 	                style="width: 60px; background-color: #7c4dff; height: 2px"
 	                />
-	            <p>
-	              <a href="#!" class="text-white">Tu cuenta</a>
-	            </p>
+		        <p>
+		        	<a href="/perfil/${user.id}" class="text-white">Tu cuenta</a>
+		        </p>
+	           
 	            <p>
 	              <a href="/donaciones" class="text-white">Donaciones</a>
 	            </p>

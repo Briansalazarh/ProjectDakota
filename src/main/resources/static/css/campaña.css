@@ -1,0 +1,247 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-image: url("img/fondo-inicio.png"); /*PENDIENTE CAMBIAR FONDO*/
+}
+section {
+    padding: 2%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.cta-area {
+    margin-left: 2% ;
+}
+.title {
+    font-size: 30px;
+}
+
+img {
+    width: 100px;
+}
+.square{
+	background-color: #0d3d63;
+	color:white;
+	border-radius: 5px;
+}
+
+.card-description {
+    width: 400px;
+}
+
+.saber_mas {
+    background-color: aquamarine;
+    border-radius: 100px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+.card-title {
+    font-family: 'Ubuntu', sans-serif;
+	font-size: 28px;
+	text-align: center;
+}
+.card-description {
+    font-size: 17px;
+}
+.card {
+    background-color: whitesmoke;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#bienvenida_campana{
+	color:white;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 38px;
+	text-align: center;
+}
+
+
+.cards2 {
+    display: flex;
+}
+
+body {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  height: 100%;
+  width: 100%; 
+  background: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+ 
+.wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.container-fostrap {
+  display: table-cell;
+  padding: 1em;
+  text-align: center;
+  vertical-align: middle;
+}
+.fostrap-logo {
+  width: 100px;
+  margin-bottom:15px
+}
+h1.heading {
+  color: #fff;
+  font-size: 1.15em;
+  font-weight: 900;
+  margin: 0 0 0.5em;
+  color: #505050;
+}
+@media (min-width: 450px) {
+  h1.heading {
+    font-size: 3.55em;
+  }
+}
+@media (min-width: 760px) {
+  h1.heading {
+    font-size: 3.05em;
+  }
+}
+@media (min-width: 900px) {
+  h1.heading {
+    font-size: 3.25em;
+    margin: 0 0 0.3em;
+  }
+}
+
+.point{
+	display: inline-block;
+    vertical-align: middle;
+    background-color: #8c8c8c;
+    padding: 6px;
+    border-radius: 100%;
+    transition: color .15s
+}
+.cont{
+	display: flex;
+	justify-content:center;
+    margin: 5px;
+}
+.cont a{
+	margin: 10px;
+    margin-right: 10px;
+}
+.cont ul{
+	display: flex;
+	list-style: none;
+	margin-bottom: 0px; 
+}
+ul.slider li {
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background:#fff;
+}
+
+#slider-2{
+	z-index:-1;
+	position: relative;
+}
+
+ul.slider li:first-child {
+    opacity: 1; /*Mostramos el primer <li>*/
+    top: 25px;
+}
+
+ul.slider li:target {
+	
+	position:absolute;
+    opacity: 1; /*Mostramos el <li> del enlace que pulsemos*/
+}
+
+.slider{
+	overflow-anchor:none;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.slider{
+  position: relative;
+  width: 800px;
+  height: 300px;
+}
+
+
+.card {
+	width: 100%;
+  	display: block; 
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
+    transition: box-shadow .25s; 
+}
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.img-card {
+  width: 100%;
+  height:200px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  display:block;
+    overflow: hidden;
+}
+.img-card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover; 
+  transition: all .25s ease;
+} 
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.card-read-more a {
+  text-decoration: none !important;
+  padding:10px;
+  font-weight:600;
+  text-transform: uppercase
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.p-lg-5 {
+	border: outset;
+}
